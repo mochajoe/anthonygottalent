@@ -3,7 +3,7 @@ import FacebookRender from "./FacebookRender";
 import ContestantCardData from "./ContestantCardData";
 
 //const API = "http://stateapi-test.votenow.tv/widgets/get?wid=";
-const API = "http://localhost:8080";
+const API = "http://localhost:8080/api";
 
 const QUERY = "31204006f9270601";
 
@@ -24,10 +24,11 @@ class ContestantRender extends Component {
       .then(response => response.json())
       .then(
         data => {
+          console.log('data',data);
           this.setState({
             contestantData: data.data,
-            loggedOut: data.text.logged_out,
-            loggedIn: data.text.logged_in
+            // loggedOut: data.text.logged_out,
+            // loggedIn: data.text.logged_in
           });
         },
         error => {

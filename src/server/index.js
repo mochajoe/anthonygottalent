@@ -9,8 +9,9 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
-app.get('/', (req,res) => {
+app.get('/api', (req,res) => {
     res.json({'data': [
         {
         "id": "1",
@@ -35,6 +36,30 @@ app.get('/', (req,res) => {
         "bio": "Etiam tempor molestie purus, a sagittis diam congue sed. Mauris pulvinar massa eget orci ultrices, a viverra dolor scelerisque.",
         "link": "https://www.facebook.com",
         "link_text": "Visit Website"
+        },
+        {
+            "id": "4",
+            "name": "The Third Contestant",
+            "image": "https://ts-cms-test.votenow.tv/campaign/10/06/1006976/15373176555ba19b173f4629.26209684.jpg",
+            "bio": "Etiam tempor molestie purus, a sagittis diam congue sed. Mauris pulvinar massa eget orci ultrices, a viverra dolor scelerisque.",
+            "link": "https://www.facebook.com",
+            "link_text": "Visit Website"
+        },
+        {
+            "id": "5",
+            "name": "The Third Contestant",
+            "image": "https://ts-cms-test.votenow.tv/campaign/10/06/1006976/15373176555ba19b173f4629.26209684.jpg",
+            "bio": "Etiam tempor molestie purus, a sagittis diam congue sed. Mauris pulvinar massa eget orci ultrices, a viverra dolor scelerisque.",
+            "link": "https://www.facebook.com",
+            "link_text": "Visit Website"
+        },
+        {
+            "id": "6",
+            "name": "The Third Contestant",
+            "image": "https://ts-cms-test.votenow.tv/campaign/10/06/1006976/15373176555ba19b173f4629.26209684.jpg",
+            "bio": "Etiam tempor molestie purus, a sagittis diam congue sed. Mauris pulvinar massa eget orci ultrices, a viverra dolor scelerisque.",
+            "link": "https://www.facebook.com",
+            "link_text": "Visit Website"
         }
         ]})
 })
