@@ -44,9 +44,7 @@ class ContestantRender extends Component {
     return (
       <>
           <div className="vote-grid">
-            <header className="headline">
-              <h2>VOTE FOR ANTHONY'S BEST TALENT //Place Holder</h2>
-            </header>
+          
             <div className="contestant-card-information">
               {contestantData.map(contestant => (
                 <ContestantCardData

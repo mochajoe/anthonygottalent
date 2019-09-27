@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import ContestantRender from "./components/ContestantRender";
 import Header from "./components/Header";
-
+import Footer from "./components/Footer";
 
 class App extends Component {
   render() {
@@ -10,6 +10,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <ContestantRender />
+        <Footer />
       </div>
     );
   }
