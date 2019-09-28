@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import FacebookRender from "./FacebookRender";
 import ContestantCardData from "./ContestantCardData";
-
+import Modal from '@material-ui/core/Modal';
 //const API = "http://stateapi-test.votenow.tv/widgets/get?wid=";
 const API = "http://localhost:8080/api";
 
@@ -12,7 +12,8 @@ class ContestantRender extends Component {
     contestantData: [],
     loggedOut: {},
     loggedIn: {},
-    error: ""
+    error: "",
+    isOpen: true
     };
 
   loginHandler = isLoggedIn => {
@@ -40,7 +41,7 @@ class ContestantRender extends Component {
   }
 
   render() {
-    const { isLoggedIn, contestantData, loggedIn, loggedOut } = this.state;
+    const { isLoggedIn, contestantData, loggedIn, loggedOut, isOpen } = this.state;
     return (
       <>
           <div className="vote-grid">

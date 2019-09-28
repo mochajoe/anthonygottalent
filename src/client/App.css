@@ -16,7 +16,6 @@ li {
 .header-image {
   background-image: url("/images/Anthony's_Got_Talent_2015_logo.png");
   display: block;
-  margin-left: auto;
   margin-right: auto;
   height:250px;
 }
@@ -69,7 +68,7 @@ h2 {
 
 @media all and (min-width: 60em) {
   .contestant-information {
-    width: 33.33%;
+    width: 15%;
   }
 }
 .contestant-content {

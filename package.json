@@ -14,11 +14,16 @@
   "author": "Anthony Nguyen",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.4.3",
+    "@material-ui/icons": "^4.4.3",
     "babel-polyfill": "^6.26.0",
     "express": "^4.16.3",
+    "install": "^0.13.0",
+    "npm": "^6.11.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-facebook-login": "^4.1.1"
+    "react-facebook-login": "^4.1.1",
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
