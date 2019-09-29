@@ -75,7 +75,8 @@ class ContestantRender extends Component {
             <div className = "modal">
             <h2 id="simple-modal-title">Text in a modal</h2>
           <p id="simple-modal-description">
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+            Vote Here for your talent!
+            <button>fsdfsdfdsf</button>
           </p>
             </div>
           </Modal>
