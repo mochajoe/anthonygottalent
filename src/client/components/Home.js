@@ -1,24 +1,16 @@
-import React, { Component } from "react";
-import FacebookRender from "./FacebookRender";
-import ContestantCardData from "./ContestantCardData";
-import Button from '@material-ui/core/Button';
 import Modal from "@material-ui/core/Modal";
-
-
-const API = "http://localhost:8080/api";
+import { Auth, Hub } from 'aws-amplify';
+import React, { Component } from "react";
+import ContestantCardData from "./ContestantCardData";
+import {FetchCall} from "../../util/FetchCall";
+import Header from "./Header";
 
 class ContestantRender extends Component {
   state = {
     contestantData: [],
-    loggedOut: {},
-    loggedIn: {},
     error: "",
-    open:false
+    user: null
     };
-
-  loginHandler = isLoggedIn => {
-    this.setState({ isLoggedIn });
-  };
 
   handleOpen = () => {
     // get which button was pressed via `stationNumber`
@@ -32,32 +24,40 @@ class ContestantRender extends Component {
 
 
   componentDidMount() {
-    fetch(API)
-      .then(response => response.json())
-      .then(
-        data => {
-          console.log('data',data);
-          this.setState({
-            contestantData: data.data,
-            // loggedOut: data.text.logged_out,
-            // loggedIn: data.text.logged_in
-          });
-        },
-        error => {
-          this.setState({
-            error
-          });
-        }
-      );
+    FetchCall().then(response => response.json())
+    .then(
+      data => {
+        console.log('data',data);
+        this.setState({
+          contestantData: data.data
+        });
+      },
+      error => {
+        this.setState({
+          error
+        });
+      }
+    );    
+
+Auth.currentSession()
+    .then(data => console.log('Userrrr', this.setState({
+      username:data.accessToken.payload.username
+    })))
+    .catch(err => console.log(err));
+ 
+ 
   }
 
   render() {
     const { isLoggedIn, contestantData, loggedIn, loggedOut, isOpen } = this.state;
+    console.log('state :', this.state)
     return (
+
       <>
+      <Header username = {this.state.username} />
           <div className="vote-grid">
-          
             <div className="contestant-card-information">
+            
               {contestantData.map(contestant => (
                 <ContestantCardData
                   key={contestant.id}
