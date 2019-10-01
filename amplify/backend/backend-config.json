@@ -1,0 +1,9 @@
+{
+	"auth": {
+		"anthonygottalent723ac69a": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	}
+}

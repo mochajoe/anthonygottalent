@@ -1,0 +1,21 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "anthonygottalent-local-20191001005605-authRole",
+            "UnauthRoleArn": "arn:aws:iam::832148753209:role/anthonygottalent-local-20191001005605-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::832148753209:role/anthonygottalent-local-20191001005605-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "anthonygottalent-local-20191001005605-deployment",
+            "UnauthRoleName": "anthonygottalent-local-20191001005605-unauthRole",
+            "StackName": "anthonygottalent-local-20191001005605",
+            "StackId": "arn:aws:cloudformation:us-west-2:832148753209:stack/anthonygottalent-local-20191001005605/ece3a8a0-e420-11e9-8b0b-024332e0cf6e"
+        },
+        "categories": {
+            "auth": {
+                "anthonygottalent723ac69a": {
+                    "hostedUIProviderCreds": "[]"
+                }
+            }
+        }
+    }
+}
