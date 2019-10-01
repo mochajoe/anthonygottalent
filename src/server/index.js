@@ -1,7 +1,17 @@
 const express = require('express');
+global.fetch = require('node-fetch');
 const os = require('os');
-
+const bodyParser = require('body-parser');
 const app = express();
+const AmazonCognitoIdentity = require('amazon-cognito-identity-js');
+
+const config = require('./config.json');
+
+const poolData = {
+  UserPoolId: config.cognito.userPoolId,
+  ClientId: config.cognito.clientID
+}
+const userPool  = new AmazonCognitoIdentity.CognitoUserPool(poolData);
 
 app.use(express.static('dist'));
 app.use(function(req, res, next) {
@@ -9,6 +19,47 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/signup', (req,res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  const confirmPassword = req.body.confirm_password;
+  const username = req.body.userName;
+  const name = req.body.name
+
+  let attributeList = [];
+  if( password !== confirmPassword) {
+    res.redirect('/signup?error=passwords');
+  }
+
+  const emailData = {
+    Name: 'email',
+    Value: email,
+  }
+
+  const nameData = {
+    Name : 'name',
+    Value: name
+};
+
+  const nameAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(nameData);
+  const emailAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(emailData);
+  attributeList.push(emailAttribute);
+  attributeList.push(nameAttribute);
+
+
+    userPool.signUp(username, password, attributeList, null, (err,data) => {
+     if (err) { 
+      return console.log(err);
+     }
+     res.send(data.user)
+   });
+
+});
+
+
 
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
 app.get('/api', (req,res) => {
